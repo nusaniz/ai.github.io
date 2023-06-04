@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.3-web/css/all.min.css"> -->
+    <title>Kalkulasi BBM</title>
+
+</head>
+
+<body>
+    <h1>Kalkulasi BBM</h1>
+    <!-- <a href="#" class="btn"><i class="fa fa-search"></i> Cari</a> -->
+
+    <style>
+        body {
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 2rem 0 0 0;
+        }
+
+        h3 {
+            text-align: center;
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+            padding: 12px 0
+        }
+
+        .input {
+            display: grid;
+            /* justify-content: center; */
+            width: 155px;
+            /* background: antiquewhite; */
+            margin: 0 auto 5px auto;
+        }
+
+        input {
+            width: 60px;
+        }
+
+        span {
+            background-color: #3bff6569;
+            padding: 0 5px;
+        }
+
+        form {
+            /* background: aquamarine; */
+            width: 337px;
+            max-width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        button {
+            margin: 0 auto;
+            /* justify-content: center; */
+            display: flex;
+            padding: 10px 15px;
+        }
+    </style>
+    <form>
+        <h3>Konsumsi BBM</h3>
+        <div class="input">
+            <label for="km-1">Kilometer Awal:</label>
+            <input type="number" id="km-1" name="km-1" value="33290.3" required>
+        </div>
+
+        <div class="input">
+            <label for="km-2">Kilometer Akhir:</label>
+            <input type="number" id="km-2" name="km-2" value="33381.6" required>
+        </div>
+
+        <div class="input">
+            <label for="liter">Liter isi full akhir:</label>
+            <input type="number" id="liter" name="liter" value="1.8" required>
+        </div>
+
+        <div class="input">
+            <label for="tangki">Kapasitas tangki (liter):</label>
+            <input type="number" id="tangki" name="tangki" value="3.7" required>
+        </div>
+
+        <br>
+        <div id="hasil"></div>
+        <div id="hasil2"></div>
+        <br>
+
+        <button type="button" onclick="hitung()">Hitung</button>
+
+
+        <h3>Biaya Perjalanan</h3>
+
+        <div class="input">
+            <label for="jarak">Jarak (km):</label>
+            <input type="number" id="jarak" name="jarak" value="35" required>
+        </div>
+
+        <div class="input">
+            <label for="konsumsi">Konsumsi (km/liter):</label>
+            <input type="number" id="konsumsi" name="konsumsi" value="50.72" required>
+        </div>
+
+        <div class="input">
+            <label for="harga">Harga BBM:</label>
+            <input type="number" id="harga" name="harga" value="10000" required>
+        </div>
+
+        <br>
+        <div id="hasil3"></div>
+        <br>
+
+
+
+
+
+
+
+
+
+
+        <button type="button" onclick="hitung()">Hitung</button>
+    </form>
+
+
+    <script>
+        function hitung() {
+            // var jarak = document.getElementById("jarak").value;
+            // var konsumsi = document.getElementById("konsumsi").value;
+            // var harga = document.getElementById("harga").value;
+            // var hasil = (jarak / konsumsi) * harga;
+            // document.getElementById("hasil").innerHTML = "Total biaya bahan bakar yang diperlukan adalah Rp " + hasil
+            //     .toFixed(2);
+
+            var km1 = document.getElementById("km-1").value;
+            var km2 = document.getElementById("km-2").value;
+            var liter = document.getElementById("liter").value;
+            var tangki = document.getElementById("tangki").value;
+            var jarak = document.getElementById("jarak").value;
+            var konsumsi = document.getElementById("konsumsi").value;
+            var harga = document.getElementById("harga").value;
+            var hasil = document.getElementById("hasil");
+            var hasil2 = document.getElementById("hasil2");
+            var hasil3 = document.getElementById("hasil3");
+            // Hitung konsumsi BBM
+            var hitung1 = (km2 - km1) / liter;
+            // Hitung jarak yang dapat ditempuh kondisi tangki full
+            var hitung2 = hitung1 * tangki;
+            // Hitung biaya bbm perjalanan
+            hitung3 = (jarak / konsumsi) * harga;
+
+
+
+            hasil.innerHTML = "Konsumsi BBM : <span>" + hitung1.toFixed(2) + "</span> km/liter";
+            hasil2.innerHTML = "Tangki full dapat menempuh jarak : <span>" + hitung2.toFixed(2) + "</span> km";
+            hasil3.innerHTML = "Biaya untuk jarak : <span>" + jarak + "</span> km yaitu <span>" + hitung3.toFixed(0) +
+                "</span>";
+        }
+    </script>
+</body>
+
+</html>
